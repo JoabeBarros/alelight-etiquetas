@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+</head><body>
+<title>Passa Cabo 5 Vias · Ale light</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: ficha de prateleira — etiqueta de posição no topo, nome, specs em grade 2 col, blocos de compatibilidade/estoque/cuidados */
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --fg:#16191d; --muted:#5c6470; --line:#dde1e6;
+  --accent:#e0a100; --accent-ink:#1a1400; --ok:#1f7a4a; --warn:#b4540a; --chip:#eceff3;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111418; --surface:#1a1f25; --fg:#eef1f4; --muted:#9aa4b1; --line:#2b323b;
+  --accent:#f2b51d; --accent-ink:#1a1400; --ok:#4cc184; --warn:#f0954a; --chip:#232a32; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111418; --surface:#1a1f25; --fg:#eef1f4; --muted:#9aa4b1; --line:#2b323b;
+  --accent:#f2b51d; --accent-ink:#1a1400; --ok:#4cc184; --warn:#f0954a; --chip:#232a32; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--f-body);padding-inline:16px;padding-block:20px 40px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.demo{font:500 12px/1.3 var(--f-mono);color:var(--muted);text-align:center;letter-spacing:.04em}
+.tag{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.tag .pos{background:var(--accent);color:var(--accent-ink);padding:10px 14px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.tag .pos small{font:600 11px/1 var(--f-body);text-transform:uppercase;letter-spacing:.1em;opacity:.75}
+.tag .pos b{font:700 26px/1.05 var(--f-display);letter-spacing:.02em}
+.tag .where{padding:10px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
+.tag .where span{font-size:13px;color:var(--muted)}
+.tag .where strong{font-weight:600}
+h1{font:700 clamp(30px,8vw,40px)/1.02 var(--f-display);margin:6px 0 0;text-wrap:balance;letter-spacing:.01em}
+.sub{color:var(--muted);margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--chip);border-radius:999px;padding:3px 10px;font-size:13px;font-weight:600}
+.chip.hi{background:var(--accent);color:var(--accent-ink)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h2{font:600 12px/1 var(--f-body);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 10px}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:0}
+.specs div{min-width:0}
+.specs dt{font-size:12px;color:var(--muted)}
+.specs dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.mono{font-family:var(--f-mono);font-size:14px}
+.compat{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.compat li{display:flex;gap:10px;align-items:baseline}
+.compat li::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--ok);transform:translateY(-1px)}
+.compat li.no::before{background:var(--warn)}
+.stock{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stock .n{font:700 40px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.stock .n small{font:500 15px var(--f-body);color:var(--muted);margin-left:4px}
+.badge{font-size:13px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid currentColor}
+.badge.ok{color:var(--ok)} .badge.low{color:var(--warn)}
+.note{display:flex;gap:10px;border-left:3px solid var(--warn);padding:2px 0 2px 12px}
+.note p{margin:0}
+.draw{color:var(--muted);overflow-x:auto}
+.draw svg{display:block;width:100%;height:auto;max-width:520px}
+.lock{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:10px}
+footer{font-size:12px;color:var(--muted);text-align:center;display:flex;flex-direction:column;gap:2px;margin-top:6px}
+footer .mono{font-size:12px}
+</style>
+
+<main class="wrap">
+  <div class="demo">DEMONSTRAÇÃO · DADOS FICTÍCIOS</div>
+  <div class="tag">
+    <div class="pos"><small>Posição</small><b>C-01</b></div>
+    <div class="where"><span>Ale light · Estoque</span><strong>Estante C · Prateleira 1</strong></div>
+  </div>
+  <div class="chips"><span class="chip hi">Passa cabo</span><span class="chip">5 vias</span><span class="chip">1 m</span></div>
+  <h1>Passa Cabo 5 Vias</h1>
+  <p class="sub">Protetor de cabos de piso com 5 canais e tampa articulada, para travessia de cabos em área de público.</p>
+
+  <section class="card"><h2>Especificações</h2><dl class="specs"><div><dt>Comprimento</dt><dd>1000 mm</dd></div><div><dt>Largura</dt><dd>450 mm</dd></div><div><dt>Altura</dt><dd>75 mm</dd></div><div><dt>Canais</dt><dd>5</dd></div><div><dt>Canal (L × A)</dt><dd>35 × 35 mm</dd></div><div><dt>Material</dt><dd>Poliuretano, tampa amarela</dd></div><div><dt>Encaixe</dt><dd>Macho / fêmea nas pontas</dd></div><div><dt>Peso</dt><dd>13 kg</dd></div><div><dt>Código interno</dt><dd class=mono>PCB-5V-1000</dd></div></dl></section>
+
+  <section class="card draw"><h2>Desenho</h2><svg viewBox="0 0 520 150" role="img" aria-label="Corte transversal do passa cabo, 450 mm, 5 canais">
+<path d="M30 96 L100 44 L420 44 L490 96 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+<rect x="100" y="62" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="171" y="62" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="242" y="62" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="313" y="62" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="384" y="62" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<line x1="30" y1="116" x2="490" y2="116" stroke="currentColor" stroke-width="1"/>
+<line x1="30" y1="110" x2="30" y2="122" stroke="currentColor"/><line x1="490" y1="110" x2="490" y2="122" stroke="currentColor"/>
+<text x="260.0" y="140" text-anchor="middle" fill="currentColor" font-family="JetBrains Mono, monospace" font-size="13">450 mm (largura) · comprimento 1000 mm</text>
+</svg></section>
+
+  <section class="card"><h2>Cabos que passam</h2><ul class="compat"><li class=""><span>PowerCON e cabo PP 3 × 2,5 mm²</span></li><li class=""><span>Cabo de rede Cat6 e cabo DMX</span></li><li class="no"><span>Cabo PP 4 × 16 mm² de alimentação trifásica: usar o passa cabo de 3 vias largas</span></li></ul></section>
+
+  <section class="card">
+    <h2>Estoque nesta posição</h2>
+    <div class="stock"><div class="n">14<small>peças</small></div><span class="badge ok">Disponível</span></div>
+    <div class="lock">Mínimo: 6 peças · Conferido em 01/10/2026 por Joabe</div>
+  </section>
+
+  <section class="card"><h2>Cuidados</h2>
+    <div style="display:flex;flex-direction:column;gap:10px"><div class="note"><p>Capacidade de carga (pedestre ou veículo): conferir a etiqueta do fabricante antes de liberar passagem de carro.</p></div><div class="note"><p>Não passar cabo de energia e cabo de sinal no mesmo canal. Usar canais diferentes.</p></div><div class="note"><p>Sinalizar as pontas com fita zebrada em área de público para evitar tropeço.</p></div></div>
+  </section>
+
+  <footer>
+    <span>Você leu a etiqueta NFC da posição <span class="mono">C-01</span>.</span>
+    <span>Os dados são atualizados no sistema; a etiqueta não precisa ser regravada.</span>
+  <a href="../" style="color:inherit;font-weight:600">Ver todas as posições</a></footer>
+</main>
+</body></html>
